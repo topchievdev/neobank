@@ -1,0 +1,12 @@
+.nav {
+  &__list {
+    all: inherit;
+    border: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__item {
+    height: inherit;
+  }
+}

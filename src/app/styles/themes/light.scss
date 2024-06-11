@@ -1,0 +1,61 @@
+:root {
+  // Общие
+
+  --primary: #000000;
+  --primary-invert: #fff;
+  --secondary: #1c1c1e;
+  --muted: #808080;
+  --info: #2d3748;
+  --warning: #ff0000;
+  --error: #ff5631;
+  --cancel: #d93737;
+  --accent: #003cff;
+  --accent-hover: #7796c0;
+
+  --bg-primary: #f5f4ff;
+
+  // Отдельные компоненты
+
+  --logo: #b4387a;
+  --nav-primary: #1d1929;
+  --nav-active: #b2a35f;
+  --input-title: #1a202c;
+  --tabs: #7b7454;
+  --checkbox: #3182ce;
+
+  --bg-card-1: #eaecee;
+  --bg-card-2: #7f92ac;
+  --bg-card-3: #88b3b8;
+  --bg-input: #d9d9d9;
+  --bg-step: #f9f5e3;
+
+  // Отдельные секции
+
+  --features-title: #0b132a;
+  --features-muted: #4f5665;
+
+  --world-title: #1c1c1c;
+
+  --news-arrow-invert: #222222;
+
+  --subscribe-accent: #eb801d;
+  --subscribe-button: #686df1;
+  --subscribe-muted: #9092b0;
+
+  --border-select: #5b35d5;
+  --border-accent: var(--accent);
+
+  --intro-muted: #3d3d3d;
+
+  --prescoring-muted: #786d6d;
+  --prescoring-bar: #e2e8f0;
+
+  --terms-muted: #434343;
+
+  --bg-footer: linear-gradient(
+      0deg,
+      rgb(178, 178, 178, 0.2),
+      rgb(178, 178, 178, 0.2)
+    ),
+    linear-gradient(0deg, #f4f4f4, #f4f4f4);
+}
