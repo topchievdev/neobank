@@ -1,0 +1,31 @@
+.link {
+  line-height: var(--lh-percent-s);
+  letter-spacing: 0.02em;
+  transition: background-color var(--animation-main),
+    color var(--animation-main);
+  font-weight: 500;
+  &--accent {
+    color: var(--primary-invert);
+    background: var(--accent);
+    padding: var(--gap-small-l);
+    border-radius: var(--radius-l);
+    font-weight: 700;
+    &:hover {
+      background: var(--accent-hover);
+    }
+  }
+  &--primary {
+    &:hover {
+      color: var(--nav-active);
+    }
+  }
+  &--regular {
+    font-weight: 400;
+  }
+  &--medium {
+    font-weight: 500;
+  }
+  &--bold {
+    font-weight: 700;
+  }
+}

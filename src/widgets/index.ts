@@ -1,0 +1,10 @@
+export { Header } from './Header'
+export { Footer } from './Footer'
+export { PageError } from './PageError'
+export { PageLoader } from './PageLoader'
+
+export { Intro } from './Intro'
+export { Features } from './Features'
+export { Exchange } from './Exchange'
+export { World } from './World'
+export { Subscribe } from './Subscribe'

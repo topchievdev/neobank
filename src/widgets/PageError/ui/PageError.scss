@@ -1,0 +1,28 @@
+.error {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 20px;
+  text-align: center;
+  background-color: var(--bg-primary);
+  &__title {
+    font-size: var(--fs-3xl);
+    line-height: var(--lh-xl);
+    font-weight: 700;
+    margin-bottom: 30px;
+  }
+  &__button {
+    color: var(--primary-invert);
+    background: var(--accent);
+    padding: var(--gap-small-l);
+    border-radius: var(--radius-s);
+    transition: var(--animation-main);
+    cursor: pointer;
+    border: none;
+    &:hover {
+      background: var(--accent-hover);
+    }
+  }
+}

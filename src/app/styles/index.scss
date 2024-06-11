@@ -1,0 +1,34 @@
+@import 'normalize.scss';
+@import 'fonts/ubuntu';
+@import 'fonts/rubik';
+@import 'fonts/nunito-sans';
+@import 'variables/global';
+@import 'themes/light';
+
+body {
+  font-family: var(--ff-main);
+  font-size: var(--fs-main);
+  font-weight: 500;
+  line-height: var(--lh-main);
+  background: var(--bg-primary);
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--gap-large-s);
+  min-height: var(--app-height);
+}
+
+.container {
+  width: 100%;
+  max-width: var(--app-width);
+  padding: 0 var(--gap-small-xl);
+  color: var(--primary);
+  margin: 0 auto;
+}
+
+.page {
+  flex-grow: 1;
+}

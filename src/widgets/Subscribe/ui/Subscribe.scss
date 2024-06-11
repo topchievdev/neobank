@@ -1,0 +1,111 @@
+.subscribe {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--secondary);
+  padding: 16px 0 50px;
+
+  &__link {
+    font-size: var(--fs-l);
+    font-weight: 700;
+    line-height: var(--lh-percent-m);
+    color: var(--subscribe-accent);
+    margin-bottom: 30px;
+  }
+
+  &__title {
+    font-size: var(--fs-xl);
+    line-height: 1.2;
+    font-weight: 700;
+    margin-bottom: 26.82px;
+  }
+
+  &__subtitle {
+    font-size: var(--fs-xl);
+    line-height: var(--lh-percent-m);
+    font-weight: 500;
+    margin-bottom: 62px;
+  }
+
+  &__form {
+    display: flex;
+    align-items: center;
+    gap: var(--gap-small-s);
+    padding: 23px 32px;
+    max-width: 100%;
+    border-radius: var(--radius-xl);
+    background: var(--primary-invert);
+    box-shadow: 0px 10px 20px 0px rgba(54, 58, 120, 0.1);
+  }
+
+  &__input {
+    border: none;
+    font-family: var(--ff-contact);
+    font-size: var(--fs-m);
+    color: var(--subscribe-muted);
+    width: 100%;
+    outline: none;
+    &:focus {
+      border-bottom: 2px solid var(--subscribe-muted);
+    }
+  }
+
+  &__icon {
+    font-size: 38px;
+    color: var(--subscribe-muted);
+  }
+}
+
+.subscribe-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: none;
+  background-color: var(--subscribe-button);
+  color: var(--primary-invert);
+  border-radius: var(--radius-xl);
+  height: 45px;
+  width: 158px;
+  padding: 0 30px 0 13px;
+  cursor: pointer;
+  transition: var(--animation-main);
+  &:hover {
+    background-color: var(--subscribe-accent);
+  }
+
+  &__icon {
+    font-size: 32px;
+    transform: rotate(-56.6deg) translate(3px);
+  }
+}
+
+@media (max-width: 500px) {
+  .subscribe {
+    text-align: center;
+
+    &__form {
+      display: grid;
+      grid-template-columns: repeat(3, auto);
+      grid-template-rows: auto;
+      grid-template-areas:
+        'icon'
+        'input'
+        'button';
+      justify-items: center;
+      column-gap: 0;
+    }
+
+    &__icon {
+      grid-area: icon;
+    }
+
+    &__input {
+      grid-area: input;
+      text-align: center;
+    }
+
+    &__button {
+      grid-area: button;
+    }
+  }
+}
