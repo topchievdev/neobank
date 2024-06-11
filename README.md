@@ -5,28 +5,40 @@
 
 ## 1. Список команд
 
-```
-npm start             — запустить проект
-```
+Запуск проекта:
 
 ```
-npm run lint:ts       — проверка линтером
+npm start
 ```
 
-```
-npm run lint:ts:fix   — фикс линтером
-```
+Проверка линтером:
 
 ```
-npm run prettier      — фикс форматтером
+npm run lint:ts
 ```
 
-```
-npm run build:dev     — сборка в dev режиме
-```
+Фикс линтером:
 
 ```
-npm run build:prod    — сборка в prod режиме
+npm run lint:ts:fix
+```
+
+Фикс форматтером:
+
+```
+npm run prettier
+```
+
+Сборка в dev режиме:
+
+```
+npm run build:dev
+```
+
+Сборка в prod режиме:
+
+```
+npm run build:prod
 ```
 
 ## 2. На основе методологии FSD
@@ -53,6 +65,7 @@ FEATURE SLICED DESIGN — https://feature-sliced.design/ru/docs/get-started/over
 ---
 
 **Слои разделяются на слайсы, которые в свою очередь имеют сегменты, вот примерный вид:**
-(processes - устаревший слой, сложные сценарии, покрывающие несколько)
+
+> (processes - устаревший слой, сложные сценарии, покрывающие несколько)
 
 ![Схема папок FSD](https://feature-sliced.design/ru/assets/images/visual_schema-e826067f573946613dcdc76e3f585082.jpg)
