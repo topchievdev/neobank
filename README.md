@@ -66,6 +66,6 @@ FEATURE SLICED DESIGN — https://feature-sliced.design/ru/docs/get-started/over
 
 **Слои разделяются на слайсы, которые в свою очередь имеют сегменты, вот примерный вид:**
 
-> (processes - устаревший слой, сложные сценарии, покрывающие несколько)
+> `processes` - устаревший слой, сложные сценарии, покрывающие несколько страниц
 
 ![Схема папок FSD](https://feature-sliced.design/ru/assets/images/visual_schema-e826067f573946613dcdc76e3f585082.jpg)
