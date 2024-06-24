@@ -1,7 +1,8 @@
 .link {
   line-height: var(--lh-percent-s);
   letter-spacing: 0.02em;
-  transition: background-color var(--animation-main),
+  transition:
+    background-color var(--animation-main),
     color var(--animation-main);
   font-weight: 500;
   &--accent {
@@ -18,14 +19,5 @@
     &:hover {
       color: var(--nav-active);
     }
-  }
-  &--regular {
-    font-weight: 400;
-  }
-  &--medium {
-    font-weight: 500;
-  }
-  &--bold {
-    font-weight: 700;
   }
 }

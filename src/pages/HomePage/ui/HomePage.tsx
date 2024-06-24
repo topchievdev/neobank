@@ -1,4 +1,4 @@
-import { Exchange, Features, Intro, Subscribe, World } from '@/widgets'
+import { Exchange, Features, Intro, News, Subscribe, World } from '@/widgets'
 import '@/app/styles/index.scss'
 import './HomePage.scss'
 
@@ -9,6 +9,7 @@ const HomePage = () => {
       <Features />
       <Exchange />
       <World />
+      <News />
       <Subscribe />
     </main>
   )

@@ -1,18 +1,15 @@
 import { memo } from 'react'
 import { Link, LinkProps } from 'react-router-dom'
 import { classNames } from '@/shared/lib/classNames/classNames'
-import {
-  TAppLinkTheme,
-  TAppLinkWeight,
-  appLinkThemeMapper,
-  appLinkWeightMapper
-} from './AppLink.types'
+import { textWeightMapper } from '@/shared/const/style'
+import { TTextWeight } from '@/shared/types/style'
+import { TAppLinkTheme, appLinkThemeMapper } from './AppLink.types'
 import './AppLink.scss'
 
 export interface IAppLinkProps extends LinkProps {
   className?: string
   theme?: TAppLinkTheme
-  weight?: TAppLinkWeight
+  weight?: TTextWeight
 }
 
 export const AppLink = memo((props: IAppLinkProps) => {
@@ -23,7 +20,7 @@ export const AppLink = memo((props: IAppLinkProps) => {
       className={classNames('link', {}, [
         className,
         theme && appLinkThemeMapper[theme],
-        weight && appLinkWeightMapper[weight]
+        weight && textWeightMapper[weight]
       ])}
       to={to}
     >

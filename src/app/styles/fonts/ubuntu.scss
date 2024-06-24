@@ -1,6 +1,7 @@
 @font-face {
   font-family: 'Ubuntu';
-  src: url('../../shared/assets/fonts/Ubuntu-Regular.woff2') format('woff2'),
+  src:
+    url('../../shared/assets/fonts/Ubuntu-Regular.woff2') format('woff2'),
     url('../../shared/assets/fonts/Ubuntu-Regular.woff') format('woff');
   font-weight: 400;
   font-style: normal;
@@ -9,7 +10,8 @@
 
 @font-face {
   font-family: 'Ubuntu';
-  src: url('../../shared/assets/fonts/Ubuntu-Medium.woff2') format('woff2'),
+  src:
+    url('../../shared/assets/fonts/Ubuntu-Medium.woff2') format('woff2'),
     url('../../shared/assets/fonts/Ubuntu-Medium.woff') format('woff');
   font-weight: 500;
   font-style: normal;
@@ -18,7 +20,8 @@
 
 @font-face {
   font-family: 'Ubuntu';
-  src: url('../../shared/assets/fonts/Ubuntu-Bold.woff2') format('woff2'),
+  src:
+    url('../../shared/assets/fonts/Ubuntu-Bold.woff2') format('woff2'),
     url('../../shared/assets/fonts/Ubuntu-Bold.woff') format('woff');
   font-weight: 700;
   font-style: normal;

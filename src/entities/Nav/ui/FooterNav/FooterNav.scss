@@ -1,0 +1,7 @@
+.footer-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap-small-s) calc(var(--gap-medium-m) + 5px);
+  padding: var(--gap-medium-m) 0 var(--gap-medium-m);
+  border-bottom: 2px solid #fff;
+}

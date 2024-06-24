@@ -13,7 +13,11 @@
     'list img'
     'link .';
 
-  background: linear-gradient(to top, rgba(178, 178, 178, 0.8) 7%, rgba(178, 178, 178, 0) 65%),
+  background: linear-gradient(
+      to top,
+      rgba(178, 178, 178, 0.8) 8.06%,
+      rgba(178, 178, 178, 0) 67.93%
+    ),
     linear-gradient(0deg, rgba(244, 244, 244, 0.9), rgba(244, 244, 244, 0.9));
   box-shadow:
     0px 0px 4px 0px rgba(0, 0, 0, 0.08),
@@ -33,11 +37,10 @@
     font-weight: 500;
     margin-bottom: 8px;
   }
-  &__list {
+  &__currency-list {
     grid-area: list;
     justify-self: start;
     align-self: center;
-    line-height: var(--lh-main);
   }
   &__link {
     grid-area: link;
@@ -96,8 +99,15 @@
     &__img {
       display: none;
     }
-    &__list {
-      width: 100%;
+  }
+}
+
+@media (max-width: 520px) {
+  .exchange {
+    text-align: center;
+    &__info,
+    &__currency-list {
+      justify-self: center;
     }
   }
 }

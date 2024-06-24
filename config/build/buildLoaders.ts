@@ -13,7 +13,7 @@ export const buildLoaders = (options: BuildOptions): ModuleOptions['rules'] => {
   const tsLoader = buildTsLoader(isDev)
 
   const assetLoader = {
-    test: /\.(png|jpg|jpeg|gif)$/i,
+    test: /\.(png|jpg|jpeg|gif|woff|woff2)$/i,
     type: 'asset/resource'
   }
 

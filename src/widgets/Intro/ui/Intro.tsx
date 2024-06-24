@@ -2,9 +2,9 @@ import cardImage1 from '@/shared/assets/img/cardImage1.jpg'
 import cardImage2 from '@/shared/assets/img/cardImage2.jpg'
 import cardImage3 from '@/shared/assets/img/cardImage3.jpg'
 import cardImage4 from '@/shared/assets/img/cardImage4.jpg'
-import './Intro.scss'
+import { getRouteLoan } from '@/shared/const/routes'
 import { AppLink } from '@/shared/ui'
-import { getRouteHome } from '@/shared/const/routes'
+import './Intro.scss'
 
 export const Intro = () => {
   return (
@@ -13,7 +13,7 @@ export const Intro = () => {
         <h1 className="intro__title">
           Choose the design you like and apply for card right now
         </h1>
-        <AppLink className="intro__link" theme="accent" to={getRouteHome()}>
+        <AppLink className="intro__link" theme="accent" to={getRouteLoan()}>
           Choose the card
         </AppLink>
       </div>

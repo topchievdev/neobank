@@ -1,4 +1,7 @@
+export { Skeleton } from './Skeleton/Skeleton'
 export { AppLink } from './AppLink/AppLink'
+export { Button } from './Button/Button'
 export { Nav } from './Nav/Nav'
-export { Logo } from './Logo/Logo'
 export { Loader } from './Loader/Loader'
+export { Logo } from './Logo/Logo'
+export { Slider } from './Slider'

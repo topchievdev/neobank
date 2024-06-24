@@ -1,0 +1,88 @@
+.subscribe-form {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-small-s);
+  padding: 23px 32px;
+  max-width: 100%;
+  border-radius: var(--radius-xl);
+  background: var(--primary-invert);
+  box-shadow: 0px 10px 20px 0px rgba(54, 58, 120, 0.1);
+
+  &__input {
+    border: none;
+    font-family: var(--ff-contact);
+    font-size: var(--fs-m);
+    color: var(--subscribe-muted);
+    width: 100%;
+    outline: none;
+    &:focus {
+      border-bottom: 2px solid var(--subscribe-muted);
+    }
+  }
+
+  &__icon {
+    font-size: 38px;
+    color: var(--subscribe-muted);
+  }
+}
+
+.subscribe-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: none;
+  gap: 10px;
+  background-color: var(--subscribe-button);
+  color: var(--primary-invert);
+  border-radius: var(--radius-xl);
+  height: 45px;
+  width: 162px;
+  padding: 0 30px 0 14px;
+  cursor: pointer;
+  transition: var(--animation-main);
+  &:hover {
+    background-color: var(--subscribe-accent);
+  }
+
+  &__icon {
+    font-size: 32px;
+    transform: rotate(-56.6deg) translate(3px);
+  }
+}
+
+@media (max-width: 500px) {
+  .subscribe-form {
+    display: grid;
+    grid-template-columns: repeat(2, align-items);
+    grid-template-rows: auto;
+    grid-template-areas:
+      'icon input'
+      'button button';
+    justify-items: center;
+    column-gap: 0;
+
+    &__icon {
+      grid-area: icon;
+      font-size: 32px;
+    }
+
+    &__input {
+      grid-area: input;
+      width: 100px;
+      text-align: center;
+      justify-self: start;
+    }
+  }
+
+  .subscribe-form--focus .subscribe-form__icon {
+    display: none;
+  }
+
+  .subscribe-form--focus .subscribe-form__input {
+    width: 162px;
+  }
+
+  .subscribe-button {
+    grid-area: button;
+  }
+}
