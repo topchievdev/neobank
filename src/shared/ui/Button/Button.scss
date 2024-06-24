@@ -1,0 +1,35 @@
+.button {
+  border: none;
+  letter-spacing: 0.02em;
+  transition:
+    background-color var(--animation-main),
+    color var(--animation-main);
+  cursor: pointer;
+  &:hover {
+    background: var(--accent-hover);
+  }
+  &--accent {
+    border-radius: var(--radius-s);
+    color: var(--primary-invert);
+    padding: var(--gap-small-l) 38px;
+    background: var(--accent);
+    font-weight: 700;
+    line-height: var(--lh-percent-s);
+  }
+  &--circle {
+    color: var(--primary-invert);
+    background: var(--accent);
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+    line-height: 24px;
+    font-size: 24px;
+    height: 64px;
+  }
+
+  &--disabled {
+    color: var(--disabled-text);
+    background: var(--primary-invert);
+    border: 1px solid var(--accent);
+    pointer-events: none;
+  }
+}

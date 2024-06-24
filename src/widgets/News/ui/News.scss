@@ -1,0 +1,16 @@
+.news {
+  text-align: center;
+  line-height: var(--lh-xl);
+
+  &__title {
+    font-size: var(--fs-xl);
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+
+  &__info {
+    font-size: var(--fs-main);
+    color: var(--info);
+    margin-bottom: 46px;
+  }
+}

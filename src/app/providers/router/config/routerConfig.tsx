@@ -1,10 +1,6 @@
 import { Navigate, RouteProps } from 'react-router-dom'
 import { HomePage } from '@/pages'
-import {
-  getRouteHome,
-  getRouteLoan,
-  getRouteNotFound
-} from '@/shared/const/routes'
+import { getRouteHome, getRouteLoan, getRouteNotFound } from '@/shared/const/routes'
 
 export enum AppRoutes {
   HOME = 'home',

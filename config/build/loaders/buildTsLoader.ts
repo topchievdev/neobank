@@ -8,7 +8,7 @@ export const buildTsLoader = (isDev: boolean) => {
       {
         loader: 'ts-loader',
         options: {
-          transpileOnly: true,
+          transpileOnly: false,
           getCustomTransformers: () => ({
             before: [isDev && ReactRefreshTypeScript()].filter(Boolean)
           })

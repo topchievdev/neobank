@@ -1,4 +1,4 @@
-import type { Mods } from '@/shared/types/classNames'
+export type Mods = Record<string, boolean | string | undefined>
 
 export const classNames = (
   cls: string,
