@@ -41,7 +41,7 @@
   --radius-xl: 20px;
   --radius-2xl: 28px;
 
-  --animation-main: 0.12s;
+  --animation-main: 0.09s;
 
   --desktop: 1300px;
   --tablet: 920px;
@@ -49,4 +49,12 @@
 
   --app-height: 100vh;
   --app-width: calc(var(--desktop) + var(--gap-small-xl) * 2);
+
+  @media (max-width: 500px) {
+    --fs-3xl: 42px;
+  }
+
+  @media (max-width: 410px) {
+    --fs-3xl: 40px;
+  }
 }

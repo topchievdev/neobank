@@ -1,4 +1,4 @@
-import worldMap from '@/shared/assets/img/Global.png'
+import worldMap from '@/shared/assets/img/worldMap.png'
 import './World.scss'
 
 export const World = () => {

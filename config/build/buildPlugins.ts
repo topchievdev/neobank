@@ -5,12 +5,9 @@ import { BuildOptions } from './types/config'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
-import FormTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin'
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin'
 
-export const buildPlugins = (
-  options: BuildOptions
-): Configuration['plugins'] => {
+export const buildPlugins = (options: BuildOptions): Configuration['plugins'] => {
   const { mode, paths, analyzer } = options
 
   const isDev = mode === 'development'
@@ -24,11 +21,7 @@ export const buildPlugins = (
   ]
 
   if (isDev) {
-    plugins.push(
-      new webpack.ProgressPlugin(),
-      new FormTsCheckerWebpackPlugin(),
-      new ReactRefreshWebpackPlugin()
-    )
+    plugins.push(new webpack.ProgressPlugin(), new ReactRefreshWebpackPlugin())
   }
 
   if (isProd) {

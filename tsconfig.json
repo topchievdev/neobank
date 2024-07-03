@@ -12,6 +12,7 @@
     "strict": true,
     "baseUrl": ".",
     "paths": {
+      "@classNames": ["./src/shared/lib/classNames/classNames.ts"],
       "@/*": ["./src/*"]
     }
   },
