@@ -17,16 +17,16 @@ export const HeaderNav = (props: IHeaderNav) => {
 
   return (
     <Nav className={classNames('header-nav', {}, [className])}>
-      <AppLink weight="700" theme="primary" to={getRouteLoan()}>
+      <AppLink weight="700" theme="primary" to={getRouteLoan()} active>
         Credit card
       </AppLink>
-      <AppLink weight="700" theme="primary" to={getRouteProduct()}>
+      <AppLink weight="700" theme="primary" to={getRouteProduct()} active>
         Product
       </AppLink>
-      <AppLink weight="700" theme="primary" to={getRouteAccount()}>
+      <AppLink weight="700" theme="primary" to={getRouteAccount()} active>
         Account
       </AppLink>
-      <AppLink weight="700" theme="primary" to={getRouteResources()}>
+      <AppLink weight="700" theme="primary" to={getRouteResources()} active>
         Resources
       </AppLink>
     </Nav>

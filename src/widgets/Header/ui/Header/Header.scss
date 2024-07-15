@@ -5,13 +5,13 @@
   align-items: center;
   gap: var(--gap-medium-xl);
   height: 64px;
-  margin-bottom: var(--gap-large-s);
+  margin-bottom: 20px;
   &__toggler {
     position: absolute;
     right: 0px;
     top: 50%;
     transform: translateY(-50%);
-    z-index: 1;
+    z-index: 101;
     &--active {
       position: fixed;
       top: 32px;

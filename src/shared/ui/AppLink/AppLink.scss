@@ -1,6 +1,7 @@
 .link {
+  display: inline-block;
   line-height: var(--lh-percent-s);
-  letter-spacing: 0.02em;
+  letter-spacing: var(--ls-main);
   transition:
     background-color var(--animation-main),
     color var(--animation-main);
@@ -19,5 +20,8 @@
     &:hover {
       color: var(--nav-active);
     }
+  }
+  &--active {
+    color: var(--nav-active);
   }
 }

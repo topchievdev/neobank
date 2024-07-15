@@ -1,5 +1,6 @@
 import path from 'path'
 import webpack from 'webpack'
+import Dotenv from 'dotenv-webpack'
 import { Configuration } from 'webpack'
 import { BuildOptions } from './types/config'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
@@ -21,7 +22,11 @@ export const buildPlugins = (options: BuildOptions): Configuration['plugins'] =>
   ]
 
   if (isDev) {
-    plugins.push(new webpack.ProgressPlugin(), new ReactRefreshWebpackPlugin())
+    plugins.push(
+      new webpack.ProgressPlugin(),
+      new ReactRefreshWebpackPlugin(),
+      new Dotenv()
+    )
   }
 
   if (isProd) {

@@ -1,7 +1,9 @@
 .exchange {
-  border-radius: var(--radius-2xl);
-  line-height: var(--lh-xl);
   padding: 32px;
+  line-height: var(--lh-xl);
+  background: var(--exchange-bg);
+  border-radius: var(--radius-2xl);
+  box-shadow: var(--exchange-shadow);
 
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -12,16 +14,6 @@
     'list img'
     'list img'
     'link .';
-
-  background: linear-gradient(
-      to top,
-      rgba(178, 178, 178, 0.8) 8.06%,
-      rgba(178, 178, 178, 0) 67.93%
-    ),
-    linear-gradient(0deg, rgba(244, 244, 244, 0.9), rgba(244, 244, 244, 0.9));
-  box-shadow:
-    0px 0px 4px 0px rgba(0, 0, 0, 0.08),
-    0px 2px 4px 0px rgb(186, 186, 186, 0.2);
 
   &__title {
     grid-area: title;

@@ -6,19 +6,13 @@ import './NewsList.scss'
 export const NewsList = () => {
   const { getData, data, error, isLoading } = useGetNews()
 
-  const isLocalHost = window.location.hostname === 'http://localhost'
-
   if (error) {
     {
       return (
         <div className="news-list__error">
-          <p className="news-list__info">
-            {isLocalHost
-              ? error
-              : 'Ну чтож, видимо CORS не настроен, на сервере, для этого адреса 😏'}
-          </p>
+          <p className="news-list__info">{error}</p>
           <Button className="news-list__button" onClick={() => getData()}>
-            {isLocalHost ? 'Try again' : 'Смириться'}
+            Try again
           </Button>
         </div>
       )

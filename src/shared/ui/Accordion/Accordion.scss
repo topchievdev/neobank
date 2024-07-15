@@ -1,0 +1,33 @@
+.accordion {
+  line-height: var(--lh-percent-m);
+
+  &__button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 28px 32px;
+    gap: 32px;
+    width: 100%;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  &__icon {
+    font-size: var(--fs-l);
+    min-width: var(--fs-l);
+    transition: 0.4s ease;
+    &--open {
+      transform: rotate(-180deg);
+    }
+  }
+
+  &__wrapper {
+    box-sizing: content-box;
+    padding: 0px 32px;
+    transition: 0.4s ease;
+    overflow: hidden;
+    height: 0;
+    color: var(--tabs);
+  }
+}

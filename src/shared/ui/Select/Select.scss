@@ -1,0 +1,19 @@
+.select {
+  background: var(--bg-input);
+  height: 40px;
+  padding: 0 16px;
+  border-radius: var(--radius-xs);
+  border: 1px solid var(--input-border);
+  width: 100%;
+  font-size: 14px;
+  font-weight: 400;
+  &:focus {
+    outline: 2px solid var(--border-select);
+  }
+}
+
+.select-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}

@@ -27,9 +27,9 @@ export const Button = memo((props: IButtonProps) => {
   return (
     <button
       className={classNames('button', { 'button--disabled': disabled }, [
-        className,
         theme && buttonThemeMapper[theme],
-        weight && textWeightMapper[weight]
+        weight && textWeightMapper[weight],
+        className
       ])}
       type={type}
       disabled={disabled}
