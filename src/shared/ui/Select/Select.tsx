@@ -1,6 +1,7 @@
-import { forwardRef, memo, SelectHTMLAttributes, useMemo } from 'react'
+import { forwardRef, memo, SelectHTMLAttributes, useMemo, useState } from 'react'
 import { Label } from '../Label/Label'
 import { classNames } from '@classNames'
+import ArrowIcon from '@/shared/assets/img/Select_arrow.svg'
 import './Select.scss'
 
 interface ISelectOption {
@@ -32,29 +33,35 @@ export const Select = memo(
       return (
         <div className="select-item">
           <Label required={required}>{label}</Label>
-          <select
-            className={classNames('select', {}, [className])}
-            name={name}
-            id={name}
-            ref={ref}
-            {...otherProps}
-          >
-            {optionsList}
-          </select>
+          <div className="select__wrapper">
+            <select
+              className={classNames('select', {}, [className])}
+              name={name}
+              id={name}
+              ref={ref}
+              {...otherProps}
+            >
+              {optionsList}
+            </select>
+            <ArrowIcon className={classNames('select__arrow')} />
+          </div>
         </div>
       )
     }
 
     return (
-      <select
-        className={classNames('select', {}, [className])}
-        name={name}
-        id={name}
-        ref={ref}
-        {...otherProps}
-      >
-        {optionsList}
-      </select>
+      <div>
+        <select
+          className={classNames('select', {}, [className])}
+          name={name}
+          id={name}
+          ref={ref}
+          {...otherProps}
+        >
+          {optionsList}
+        </select>
+        <ArrowIcon className={classNames('select__arrow')} />
+      </div>
     )
   })
 )
