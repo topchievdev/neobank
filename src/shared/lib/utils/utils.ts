@@ -1,3 +1,15 @@
+export const formatNumber = (num: number): string => {
+  return num.toLocaleString('ru-RU')
+}
+
+export const filterDigits = (string: string): string => {
+  return string.replace(/\D/g, '')
+}
+
+export const numWithSpaces = (x: number) => {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')
+}
+
 export const scrollTo = (id: string) => {
   const section = document.querySelector(`#${id}`)
   section?.scrollIntoView({ behavior: 'smooth', block: 'start' })

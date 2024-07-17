@@ -2,13 +2,14 @@ import { useEffect, useState } from 'react'
 import { sendEmail } from '../api/sendEmail'
 import { errorHandler } from '@/shared/lib/errorHandler/errorHandler'
 import { LOCAL_STORAGE_IS_SUBSCRIBED_KEY } from '@/shared/const/localstorage'
+import { IEmail } from '../types/email'
 
 export const useSendEmail = () => {
   const [data, setData] = useState<string>('')
   const [error, setError] = useState<string | null>()
   const [isLoading, setIsLoading] = useState<boolean>(false)
 
-  const sendData = (email: string) => {
+  const sendData = (email: IEmail) => {
     setError(null)
     setIsLoading(true)
 

@@ -12,7 +12,7 @@ export const SubscribeForm = () => {
   const { sendData, data, error, isLoading } = useSendEmail()
 
   const onSubmit = () => {
-    sendData(email)
+    sendData({ email })
   }
 
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {

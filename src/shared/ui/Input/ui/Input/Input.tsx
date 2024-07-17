@@ -1,6 +1,6 @@
 import { forwardRef, InputHTMLAttributes, memo } from 'react'
 import { classNames, Mods } from '@classNames'
-import { Label } from '../Label/Label'
+import { Label } from '../../../Label/Label'
 import './Input.scss'
 import ValidIcon from '@/shared/assets/img/Success-icon.svg'
 import InvalidIcon from '@/shared/assets/img/Error-icon.svg'
@@ -28,7 +28,10 @@ export const Input = memo(
     } = props
 
     const mods: Mods = {
-      'input--error': isSubmitted && error
+      'input--error': isSubmitted && error,
+      'input--date': type === 'date',
+      'input--error-date':
+        (type === 'date' && isSubmitted && error) || (isDirty && !error)
     }
 
     return (

@@ -1,1 +1,1 @@
-export { PrescoringForm } from './ui/PrescoringForm'
+export { PrescoringForm } from './ui/PrescoringForm/PrescoringForm'

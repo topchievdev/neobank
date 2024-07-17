@@ -2,7 +2,6 @@ import { isLeapYear, msToYears } from './utils'
 
 const age = (date: string | Date, min: number = 18, max: number = 123) => {
   if (typeof date === 'string') date = new Date(date)
-
   const birthDate = date.getTime()
   const currentDate = new Date().getTime()
 

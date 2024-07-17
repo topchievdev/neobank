@@ -1,26 +1,44 @@
 import { SubmitHandler, useForm } from 'react-hook-form'
-import { useSendPrescoringData } from '../model/hooks/useSendPrescoringData'
 import { formValidate } from '@/shared/lib/utils/formValidate'
-import { Button, Input, Loader, Select } from '@/shared/ui'
-import { IPrescoringData } from '../model/types/prescoring'
+import { Button, Input, InputAmount, Loader, Select } from '@/shared/ui'
 import { regex } from '@/shared/const/regex'
+import { useSendPrescoringData } from '../../model/hooks/useSendPrescoringData'
+import { IPrescoringData } from '../../model/types/prescoring'
+import { SelectAmount } from '../SelectAmount/SelectAmount'
 import './PrescoringForm.scss'
+import { ChangeEvent, FocusEvent } from 'react'
+import { filterDigits } from '@/shared/lib/utils/utils'
+
+const AMOUNT_DEFAULT = 150000
+const AMOUNT_MIN = 15000
+const AMOUNT_MAX = 600000
 
 export const PrescoringForm = () => {
   const { sendData, resetError, data, error, isLoading } = useSendPrescoringData()
   const {
     register,
+    watch,
+    setValue,
     handleSubmit,
-    formState: { errors, isSubmitted, dirtyFields },
-    watch
+    formState: { errors, isSubmitted, dirtyFields }
   } = useForm<IPrescoringData>({
     mode: 'all',
     defaultValues: {
-      amount: 150000
+      amount: AMOUNT_DEFAULT
     }
   })
 
-  const amountField = watch('amount')
+  const onBlurAmount = (e: FocusEvent<HTMLInputElement>) => {
+    let newValue = Number(filterDigits(e.target.value))
+    if (newValue >= AMOUNT_MAX) newValue = AMOUNT_MAX
+    if (newValue <= AMOUNT_MIN) newValue = AMOUNT_MIN
+    setValue('amount', newValue)
+  }
+
+  const onChangeAmount = (e: ChangeEvent<HTMLInputElement>) => {
+    const newValue = Number(filterDigits(e.target.value))
+    setValue('amount', newValue)
+  }
 
   const onSubmit: SubmitHandler<IPrescoringData> = (data) => {
     sendData(data)
@@ -65,22 +83,27 @@ export const PrescoringForm = () => {
             <h3 className="prescoring-form__title">Customize your card</h3>
             <p className="prescoring-form__step">Step 1 of 5</p>
           </div>
-          <div className="prescoring-form__select">
-            <Input
-              className="prescoring-form__range"
-              label="Select Amount"
-              type="range"
-              min={15000}
-              max={600000}
-              {...register('amount')}
-            />
-          </div>
+          <SelectAmount
+            label="Select Amount"
+            min={AMOUNT_MIN}
+            max={AMOUNT_MAX}
+            onBlur={onBlurAmount}
+            value={watch('amount')}
+            {...(register('amount'), { onChange: onChangeAmount })}
+          />
         </div>
         <div className="prescoring-form__total-wrapper">
           <h4 className="prescoring-form__amount-title">
             You have chosen the amount
           </h4>
-          <p className="prescoring-form__amount">{amountField}</p>
+          <InputAmount
+            className="prescoring-form__amount"
+            min={AMOUNT_MIN}
+            max={AMOUNT_MAX}
+            onBlur={onBlurAmount}
+            value={watch('amount')}
+            {...(register('amount'), { onChange: onChangeAmount })}
+          />
         </div>
       </div>
       <div className="prescoring-form__contact-info">
