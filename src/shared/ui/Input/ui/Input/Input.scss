@@ -50,15 +50,6 @@
   &--error-date {
     padding-right: 45px;
   }
-
-  &--date::-webkit-calendar-picker-indicator {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: transparent;
-  }
 }
 
 .input-item {
