@@ -1,5 +1,5 @@
 import { memo } from 'react'
-import { Link, LinkProps } from 'react-router-dom'
+import { Link, LinkProps, useLocation } from 'react-router-dom'
 import { classNames } from '@/shared/lib/classNames/classNames'
 import { textWeightMapper } from '@/shared/const/style'
 import { TTextWeight } from '@/shared/types/style'
@@ -10,14 +10,17 @@ export interface IAppLinkProps extends LinkProps {
   className?: string
   theme?: TAppLinkTheme
   weight?: TTextWeight
+  active?: boolean
 }
 
 export const AppLink = memo((props: IAppLinkProps) => {
-  const { className, children, to, theme, weight } = props
+  const { className, children, active, to, theme, weight } = props
+
+  const route = useLocation().pathname
 
   return (
     <Link
-      className={classNames('link', {}, [
+      className={classNames('link', { 'link--active': active && route === to }, [
         className,
         theme && appLinkThemeMapper[theme],
         weight && textWeightMapper[weight]

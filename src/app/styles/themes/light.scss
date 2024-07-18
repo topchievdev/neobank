@@ -7,14 +7,19 @@
   --muted: #808080;
   --muted-light: #00000008;
   --info: #2d3748;
+  --success: #008000;
   --warning: #ff0000;
   --error: #ff5631;
   --cancel: #d93737;
   --accent: #003cff;
   --accent-hover: #7796c0;
+  --active: #b2a35f;
   --disabled-text: #222222;
 
   --bg-primary: #f5f4ff;
+
+  --border-select: #5b35d5;
+  --border-accent: var(--accent);
 
   // Отдельные компоненты
 
@@ -22,20 +27,33 @@
   --nav-primary: #1d1929;
   --nav-active: #b2a35f;
   --input-title: #1a202c;
+  --input-border: #80808033;
   --tabs: #7b7454;
   --checkbox: #3182ce;
   --skeleton: #8080801f;
 
   --bg-card-1: #eaecee;
-  --bg-card-2: #7f92ac;
-  --bg-card-3: #88b3b8;
-  --bg-input: #d9d9d9;
+  --bg-card-2: #7f92acb3;
+  --bg-card-3: #88b3b899;
+  --bg-input: #f9f5e3;
+  --bg-divider: #d9d9d9;
   --bg-step: #f9f5e3;
+
+  --shadow-card: 0px 2px 4px 0px #00000033, 0px 0px 8px 0px #00000014;
 
   // Отдельные секции
 
   --features-title: #0b132a;
   --features-muted: #4f5665;
+
+  --exchange-bg: linear-gradient(
+      to top,
+      rgba(178, 178, 178, 0.8) 8.06%,
+      rgba(178, 178, 178, 0) 67.93%
+    ),
+    linear-gradient(0deg, rgba(244, 244, 244, 0.9), rgba(244, 244, 244, 0.9));
+  --exchange-shadow: 0px 0px 4px 0px rgba(90, 69, 69, 0.08),
+    0px 2px 4px 0px rgb(186, 186, 186, 0.2);
 
   --world-title: #1c1c1c;
 
@@ -43,15 +61,20 @@
   --subscribe-button: #686df1;
   --subscribe-muted: #9092b0;
 
-  --border-select: #5b35d5;
-  --border-accent: var(--accent);
+  --suggestion-bg: linear-gradient(
+    180.8deg,
+    rgba(203, 213, 224, 0.624) 34.33%,
+    rgba(254, 235, 200, 0.56) 64.27%
+  );
 
-  --intro-muted: #3d3d3d;
+  --suggestion-muted: #3d3d3d;
+
+  --info-border: #e2e8f0;
+  --info-separator: #7f92ac;
+  --info-muted: #434343;
 
   --prescoring-muted: #786d6d;
   --prescoring-bar: #e2e8f0;
-
-  --terms-muted: #434343;
 
   --bg-footer: linear-gradient(
       0deg,

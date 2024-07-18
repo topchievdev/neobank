@@ -24,6 +24,18 @@
     font-size: 38px;
     color: var(--subscribe-muted);
   }
+
+  &__error {
+    color: var(--error);
+    font-size: var(--fs-l);
+    margin-bottom: 16px;
+  }
+
+  &__data {
+    color: var(--subscribe-accent);
+    font-size: var(--fs-xl);
+    line-height: var(--lh-percent-m);
+  }
 }
 
 .subscribe-button {

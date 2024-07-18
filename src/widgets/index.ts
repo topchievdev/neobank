@@ -9,3 +9,8 @@ export { Exchange } from './Exchange'
 export { World } from './World'
 export { News } from './News'
 export { Subscribe } from './Subscribe'
+
+export { Suggestion } from './Suggestion'
+export { Info } from './Info'
+export { Instruction } from './Instruction'
+export { Prescoring } from './Prescoring'

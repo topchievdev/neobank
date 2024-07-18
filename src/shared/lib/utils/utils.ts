@@ -1,3 +1,44 @@
+export const formatNumber = (num: number): string => {
+  return num.toLocaleString('ru-RU')
+}
+
+export const filterDigits = (string: string): string => {
+  return string.replace(/\D/g, '')
+}
+
+export const numWithSpaces = (x: number) => {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')
+}
+
+export const scrollTo = (id: string) => {
+  const section = document.querySelector(`#${id}`)
+  section?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+}
+
+export const isLeapYear = (year: number) => {
+  const date = new Date(year, 2, 0)
+
+  return date.getDate() == 29
+}
+
+export const yearsToMs = (year: number) => {
+  const ms = 1000
+  const sec = 60
+  const min = 60
+  const hours = 24
+  const days = 365
+  return ms * sec * min * hours * days * year
+}
+
+export const msToYears = (milliseconds: number) => {
+  const ms = 1000
+  const sec = 60
+  const min = 60
+  const hours = 24
+  const days = 365
+  return milliseconds / ms / sec / min / hours / days
+}
+
 export const minutesToMs = (min: number) => {
   const ms = 1000
   const sec = 60
