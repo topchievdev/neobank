@@ -1,15 +1,24 @@
 .accordion {
   line-height: var(--lh-percent-m);
+  border: 1px solid var(--info-border);
 
-  &__button {
+  &:not(:first-child) {
+    border-top: none;
+  }
+
+  &__input {
+    display: none;
+  }
+
+  &__label {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 28px 32px;
     gap: 32px;
     width: 100%;
-    background: none;
     border: none;
+    background: none;
     cursor: pointer;
   }
 
@@ -17,7 +26,7 @@
     font-size: var(--fs-l);
     min-width: var(--fs-l);
     transition: 0.4s ease;
-    &--open {
+    &--active {
       transform: rotate(-180deg);
     }
   }
@@ -25,9 +34,15 @@
   &__wrapper {
     box-sizing: content-box;
     padding: 0px 32px;
-    transition: 0.4s ease;
+    transition:
+      height 0.4s ease-in-out,
+      padding 0.4s ease-in-out;
     overflow: hidden;
     height: 0;
     color: var(--tabs);
+
+    &--active {
+      padding: 28px 32px;
+    }
   }
 }

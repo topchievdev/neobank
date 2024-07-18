@@ -1,7 +1,8 @@
-import { Accordion } from '@/shared/ui'
+import { AccordionList } from '@/shared/ui'
 import './Faq.scss'
+import { useState } from 'react'
 
-const faqData: { title: string; content: string }[] = [
+const receivingCardData: { title: string; content: string }[] = [
   {
     title: 'How to get a card?',
     content:
@@ -27,18 +28,49 @@ const faqData: { title: string; content: string }[] = [
   }
 ]
 
+const usingCardData: { title: string; content: string }[] = [
+  {
+    title: 'What is an interest free credit card?',
+    content:
+      'A credit card with a grace period is a bank card with an established credit limit, designed for payment, reservation of goods and services, as well as for receiving cash, which allows you to use credit funds free of charge for a certain period.'
+  },
+  {
+    title: 'How to activate a credit card',
+    content:
+      'You can activate your credit card and generate a PIN code immediately after receiving the card at a bank branch using a PIN pad.'
+  },
+  {
+    title: 'What is a settlement date?',
+    content:
+      'The settlement date is the date from which you can pay off the debt for the reporting period. The settlement date falls on the first calendar day following the last day of the reporting period. The first settlement date is reported by the bank when transferring the issued credit card to the client, and then in the monthly account statement.'
+  },
+  {
+    title: 'What do I need to know about interest rates?',
+    content:
+      'For each reporting period from the 7th day of the previous month to the 6th day of the current month inclusive, a statement is generated for the credit card. The statement contains information on the amount and timing of the minimum payment, as well as the total amount of debt as of the date of issue.'
+  }
+]
+
 export const Faq = () => {
+  const [_, setState] = useState(false)
+  const forceUpdate = () => setState((prev) => !prev)
+
   return (
-    <ul className="faq">
-      {faqData.map(({ title, content }) => (
-        <Accordion
-          className="faq__item"
-          title={title}
-          content={content}
-          key={title}
-          tag="li"
-        />
-      ))}
-    </ul>
+    <>
+      <AccordionList
+        title="Issuing and receiving a card"
+        name="faq"
+        data={receivingCardData}
+        parentForceUpdate={forceUpdate}
+        onlyOne
+      />
+      <AccordionList
+        title="Using a credit card"
+        name="faq"
+        data={usingCardData}
+        parentForceUpdate={forceUpdate}
+        onlyOne
+      />
+    </>
   )
 }
