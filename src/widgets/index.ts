@@ -14,3 +14,8 @@ export { Suggestion } from './Suggestion'
 export { Info } from './Info'
 export { Instruction } from './Instruction'
 export { Prescoring } from './Prescoring'
+
+export { PaymentSchedule } from './PaymentSchedule'
+export { SigningOfDocuments } from './SigningOfDocuments'
+export { Confirmation } from './Confirmation'
+export { Congratulations } from './Congratulations'

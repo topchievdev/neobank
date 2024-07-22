@@ -1,3 +1,5 @@
+$margin-bottom: 4px;
+
 .select {
   background: var(--bg-input);
   height: 40px;
@@ -10,8 +12,13 @@
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+  margin-top: 8px;
+  margin-bottom: $margin-bottom;
+
   &:focus {
     outline: 2px solid var(--border-select);
+    outline-offset: -2px;
+    border: none;
   }
 
   &__wrapper {
@@ -23,13 +30,16 @@
     font-size: 24px;
     top: 50%;
     right: 0;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, calc(-50% + $margin-bottom / 2));
     pointer-events: none;
   }
-}
 
-.select-item {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+  &__error {
+    margin-top: 2px;
+    color: var(--error);
+  }
+
+  &--error {
+    border: 2px solid var(--error);
+  }
 }

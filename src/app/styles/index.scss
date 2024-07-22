@@ -18,7 +18,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: var(--gap-large-s);
+  gap: var(--gap-large-l);
   min-height: var(--app-height);
 }
 
@@ -32,4 +32,11 @@ body {
 
 .page {
   flex-grow: 1;
+  min-height: 371px;
+}
+
+.modal-open {
+  height: 100vh;
+  overflow-y: hidden;
+  padding-right: 17px;
 }

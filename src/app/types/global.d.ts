@@ -1,5 +1,6 @@
 declare module '*.module.scss'
 declare module '*.png'
+declare module '*.pdf'
 declare module '*.jpg'
 declare module '*.jpeg'
 declare module '*.svg' {
@@ -7,6 +8,8 @@ declare module '*.svg' {
   const SVG: React.FC<React.SVGProps<SVGSVGElement>>
   export default SVG
 }
+
+declare const __IS_DEV__: boolean
 
 declare namespace NodeJS {
   interface ProcessEnv {
@@ -20,3 +23,9 @@ declare namespace NodeJS {
     API_BASE_URL_MAIN: string
   }
 }
+
+type DeepPartial<T> = T extends object
+  ? {
+      [P in keyof T]?: DeepPartial<T[P]>
+    }
+  : T

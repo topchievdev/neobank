@@ -1,5 +1,5 @@
 import { Route, RouteProps, Routes } from 'react-router-dom'
-import { routeConfig } from '../config/routerConfig'
+import { routeConfig } from '../../config/routerConfig'
 
 const AppRouter = () => {
   const makeRoute = (route: RouteProps) => {

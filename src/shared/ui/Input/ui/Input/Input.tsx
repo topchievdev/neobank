@@ -35,13 +35,13 @@ export const Input = memo(
     }
 
     return (
-      <div className="input-item">
+      <div className={classNames('input-item', {}, [className])}>
         <Label className="input__label" htmlFor={name} required={required}>
           {label}
         </Label>
         <div className="input-wrapper">
           <input
-            className={classNames('input', mods, [className])}
+            className={classNames('input', mods)}
             id={name}
             type={type}
             name={name}

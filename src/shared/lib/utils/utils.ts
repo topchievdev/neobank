@@ -1,4 +1,20 @@
-export const formatNumber = (num: number): string => {
+export const updateLocalStorage = (key: string, newData: object) => {
+  const data = localStorage.getItem(key)
+  if (data) {
+    const parsedData = JSON.parse(data)
+    const updatedData = { ...parsedData, ...newData }
+    localStorage.setItem(key, JSON.stringify(updatedData))
+  } else {
+    localStorage.setItem(key, JSON.stringify(newData))
+  }
+}
+
+export const getDataFromLocalStorage = (key: string) => {
+  const data = localStorage.getItem(key)
+  return typeof data === 'string' && JSON.parse(data)
+}
+
+export const formatNumber = (num: number): string | undefined => {
   return num.toLocaleString('ru-RU')
 }
 

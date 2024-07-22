@@ -23,6 +23,9 @@
     color: var(--primary-invert);
     margin-bottom: 48px;
   }
+  &__link {
+    border-radius: 8px;
+  }
   &__info {
     color: var(--info);
     margin-bottom: 32px;

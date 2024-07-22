@@ -1,2 +1,7 @@
 export { HomePage } from './HomePage'
 export { LoanPage } from './LoanPage'
+export { NotFoundPage } from './NotFoundPage'
+export { ScoringPage } from './ScoringPage'
+export { DocumentPage } from './DocumentPage'
+export { SignPage } from './SignPage'
+export { CodePage } from './CodePage'

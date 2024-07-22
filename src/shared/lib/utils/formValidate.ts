@@ -28,4 +28,16 @@ const age = (date: string | Date, min: number = 18, max: number = 123) => {
   return true
 }
 
-export const formValidate = { age }
+const dateNotAfterToday = (date: string | Date) => {
+  if (typeof date === 'string') date = new Date(date)
+
+  const currentDate = new Date()
+
+  if (date > currentDate) {
+    return 'The date should not be later than today'
+  }
+
+  return true
+}
+
+export const formValidate = { age, dateNotAfterToday }

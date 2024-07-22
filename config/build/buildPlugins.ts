@@ -1,5 +1,5 @@
 import path from 'path'
-import webpack from 'webpack'
+import webpack, { DefinePlugin } from 'webpack'
 import Dotenv from 'dotenv-webpack'
 import { Configuration } from 'webpack'
 import { BuildOptions } from './types/config'
@@ -18,6 +18,9 @@ export const buildPlugins = (options: BuildOptions): Configuration['plugins'] =>
     new HtmlWebpackPlugin({
       template: paths.html,
       favicon: path.resolve(paths.public, 'favicon.ico')
+    }),
+    new DefinePlugin({
+      __IS_DEV__: JSON.stringify(isDev)
     })
   ]
 
