@@ -5,6 +5,7 @@ import './Congratulations.scss'
 import { useEffect } from 'react'
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch'
 import { loanStatusActions } from '@/entities/Loan'
+import { scheduleActions } from '@/features/ScheduleTable'
 
 export const Congratulations = () => {
   const dispatch = useAppDispatch()
@@ -13,6 +14,7 @@ export const Congratulations = () => {
     return () => {
       dispatch(loanStatusActions.resetLoanStatus())
       dispatch(loanStatusActions.initLoanStatus())
+      dispatch(scheduleActions.resetData())
     }
   }, [])
 

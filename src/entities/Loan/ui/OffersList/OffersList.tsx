@@ -1,6 +1,7 @@
 import { IOfferData } from '@/shared/types/loan'
 import { OfferCard } from '@/entities'
 import './OffersList.scss'
+import { useEffect, useState } from 'react'
 
 interface IOffersListProps {
   items: IOfferData[]
@@ -8,9 +9,15 @@ interface IOffersListProps {
 
 export const OffersList = (props: IOffersListProps) => {
   const { items } = props
+  const [sortedItems, setSortedItems] = useState(items)
+
+  useEffect(() => {
+    setSortedItems([...sortedItems].sort((a, b) => b.rate - a.rate))
+  }, [items])
+
   return (
     <div className="offers-list">
-      {items.map((item, key) => (
+      {sortedItems.map((item, key) => (
         <OfferCard
           applicationId={item.applicationId}
           requestedAmount={item.requestedAmount}

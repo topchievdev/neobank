@@ -9,6 +9,7 @@ import {
   getOfferData,
   getOfferError,
   getOfferIsLoading,
+  offerActions,
   OfferMessage
 } from '@/entities/Loan'
 import {
@@ -31,6 +32,7 @@ export const Prescoring = () => {
 
   const resetErrorHandler = useCallback(() => {
     dispatch(prescoringActions.resetError())
+    dispatch(offerActions.resetError())
   }, [])
 
   if (isLoading) {

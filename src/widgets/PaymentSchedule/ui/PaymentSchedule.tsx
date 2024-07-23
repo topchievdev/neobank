@@ -12,12 +12,14 @@ import { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch'
 import { createDocuments } from '@/entities/Loan/model/services/createDocuments'
+import { getScheduleData } from '@/features/ScheduleTable'
 
 export const PaymentSchedule = () => {
   const [isOpenModal, setIsOpenModal] = useState(false)
   const [isAgree, setIsAgree] = useState(false)
   const applicationId = useSelector(getLoanStatusApplicationId)
   const isLoading = useSelector(getDocumentsIsLoading)
+  const data = useSelector(getScheduleData)
   const error = useSelector(getDocumentsError)
 
   const dispatch = useAppDispatch()
@@ -83,7 +85,7 @@ export const PaymentSchedule = () => {
         />
         <Button
           className="payment-schedule__button"
-          disabled={!isAgree}
+          disabled={!isAgree || !data}
           onClick={onSend}
         >
           Send

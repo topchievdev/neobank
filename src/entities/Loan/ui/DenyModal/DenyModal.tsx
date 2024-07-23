@@ -9,6 +9,7 @@ import { loanStatusActions } from '../../model/slice/loanStatusSlice'
 import { denyApplication } from '../../model/services/denyApplication'
 import { getLoanStatusApplicationId } from '../../model/selectors/getLoanStatusSelectors'
 import './DenyModal.scss'
+import { scheduleActions } from '@/features/ScheduleTable'
 
 interface IDenyModalProps {
   className?: string
@@ -30,6 +31,7 @@ export const DenyModal = (props: IDenyModalProps) => {
       navigate(getRouteHome())
       dispatch(loanStatusActions.resetLoanStatus())
       dispatch(loanStatusActions.initLoanStatus())
+      dispatch(scheduleActions.resetData())
     }
   }
 

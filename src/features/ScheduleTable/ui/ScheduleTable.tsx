@@ -1,9 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { getScheduleData } from '../model/selectors/getScheduleSelectors'
-import { getApplicationById } from '../model/services/getApplicationById'
-import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch'
-import { getLoanStatusApplicationId } from '@/entities/Loan'
 import { IScheduleData } from '../model/types/schedule'
 import DownIcon from '@/shared/assets/img/Arrow_drop_down.svg'
 import UpIcon from '@/shared/assets/img/Arrow_drop_up.svg'
@@ -17,17 +14,9 @@ interface IScheduleTableProps {
 export const ScheduleTable = (props: IScheduleTableProps) => {
   const { className } = props
 
-  const dispatch = useAppDispatch()
-  const applicationId = useSelector(getLoanStatusApplicationId)
   const data = useSelector(getScheduleData)
   const [sortedBy, setSortedBy] = useState('')
   const [sortedData, setSortedData] = useState<IScheduleData[]>()
-
-  useEffect(() => {
-    if (applicationId) {
-      dispatch(getApplicationById(applicationId))
-    }
-  }, [])
 
   useEffect(() => {
     setSortedData(data)

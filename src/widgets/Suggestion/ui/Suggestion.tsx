@@ -42,6 +42,7 @@ export const Suggestion = () => {
     if (step === 6) return getAppRouteCode(applicationId)
     return getRouteHome()
   }
+
   return (
     <section className="suggestion">
       <div className="suggestion__content">
