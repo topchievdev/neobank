@@ -16,7 +16,7 @@ export { Instruction } from './Instruction'
 export { Prescoring } from './Prescoring'
 
 export { PaymentSchedule } from './PaymentSchedule'
-export { SigningOfDocuments } from './SigningOfDocuments'
+export { SigningDocs } from './SigningDocs'
 export { Confirmation } from './Confirmation'
 export { Congratulations } from './Congratulations'
 export { Denied } from './Denied'

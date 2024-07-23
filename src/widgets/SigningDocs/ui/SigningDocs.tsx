@@ -4,9 +4,9 @@ import { Button, Checkbox } from '@/shared/ui'
 import FileIcon from '@/shared/assets/img/File_dock_duotone.svg'
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch'
 import { getLoanStatusApplicationId, signDocuments } from '@/entities/Loan'
-import './SigningOfDocuments.scss'
+import './SigningDocs.scss'
 
-export const SigningOfDocuments = () => {
+export const SigningDocs = () => {
   const [isAgree, setIsAgree] = useState(false)
   const applicationId = useSelector(getLoanStatusApplicationId)
   const dispatch = useAppDispatch()
@@ -22,12 +22,12 @@ export const SigningOfDocuments = () => {
   }
 
   return (
-    <section className="signing-of-documents">
-      <div className="signing-of-documents__header">
-        <h3 className="signing-of-documents__title">Signing of documents</h3>
-        <p className="signing-of-documents__step">Step 4 of 5</p>
+    <section className="signing-docs">
+      <div className="signing-docs__header">
+        <h3 className="signing-docs__title">Signing of documents</h3>
+        <p className="signing-docs__step">Step 4 of 5</p>
       </div>
-      <p className="signing-of-documents__info">
+      <p className="signing-docs__info">
         Information on interest rates under bank deposit agreements with individuals.
         Center for Corporate Information Disclosure. Information of a professional
         participant in the securities market. Information about persons under whose
@@ -38,21 +38,19 @@ export const SigningOfDocuments = () => {
         personal data, a form of consent to the processing of personal data.
       </p>
       <a
-        className="signing-of-documents__link"
+        className="signing-docs__link"
         href={'/credit-card-offer.pdf'}
         target="_blank"
         rel="noreferrer noopener"
         download
       >
-        <FileIcon className="signing-of-documents__icon" />
-        <span className="signing-of-documents__link-info">
-          Information on your card
-        </span>
+        <FileIcon className="signing-docs__icon" />
+        <span className="signing-docs__link-info">Information on your card</span>
       </a>
-      <div className="signing-of-documents__actions">
+      <div className="signing-docs__actions">
         <Checkbox onClick={onToggleAgree} isChecked={isAgree} label="I agree" />
         <Button
-          className="signing-of-documents__button"
+          className="signing-docs__button"
           disabled={!isAgree}
           onClick={onSend}
         >

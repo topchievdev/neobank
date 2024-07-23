@@ -1,4 +1,4 @@
-.signing-of-documents {
+.signing-docs {
   padding-top: 84px;
   line-height: var(--lh-percent-s);
 
@@ -53,14 +53,14 @@
 }
 
 @media (max-width: 570px) {
-  .signing-of-documents__header {
+  .signing-docs__header {
     gap: 0;
     justify-content: space-between;
   }
 }
 
 @media (max-width: 470px) {
-  .signing-of-documents__header {
+  .signing-docs__header {
     flex-direction: column-reverse;
     align-items: start;
     gap: 16px;
@@ -68,7 +68,7 @@
 }
 
 @media (max-width: 400px) {
-  .signing-of-documents__actions {
+  .signing-docs__actions {
     flex-direction: column;
     gap: 32px;
   }

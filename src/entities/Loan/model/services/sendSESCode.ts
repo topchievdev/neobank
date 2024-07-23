@@ -1,6 +1,6 @@
+import { createAsyncThunk } from '@reduxjs/toolkit'
 import { mainApi } from '@/shared/api/mainApi'
 import { errorHandler } from '@/shared/lib/errorHandler/errorHandler'
-import { createAsyncThunk } from '@reduxjs/toolkit'
 import { loanStatusActions } from '../slice/loanStatusSlice'
 
 export const sendSESCode = createAsyncThunk<
