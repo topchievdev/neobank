@@ -1,6 +1,6 @@
-import { forwardRef, memo, SelectHTMLAttributes, useMemo, useState } from 'react'
+import { forwardRef, memo, SelectHTMLAttributes, useMemo } from 'react'
 import { Label } from '../Label/Label'
-import { classNames } from '@classNames'
+import { classNames, Mods } from '@classNames'
 import ArrowIcon from '@/shared/assets/img/Select_arrow.svg'
 import './Select.scss'
 
@@ -13,11 +13,24 @@ interface ISelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
   className?: string
   label?: string
   options?: ISelectOption[]
+  empty?: boolean
+  error?: string
+  isSubmitted?: boolean
 }
 
 export const Select = memo(
   forwardRef<HTMLSelectElement, ISelectProps>((props, ref) => {
-    const { className, label, name, options, required, ...otherProps } = props
+    const {
+      className,
+      label,
+      name,
+      options,
+      required,
+      empty,
+      error,
+      isSubmitted,
+      ...otherProps
+    } = props
 
     const optionsList = useMemo(
       () =>
@@ -29,22 +42,26 @@ export const Select = memo(
       [options]
     )
 
+    const mods: Mods = { 'select--error': isSubmitted && error }
+
     if (label) {
       return (
-        <div className="select-item">
+        <div className={classNames('select-item', {}, [className])}>
           <Label required={required}>{label}</Label>
           <div className="select__wrapper">
             <select
-              className={classNames('select', {}, [className])}
+              className={classNames('select', mods)}
               name={name}
               id={name}
               ref={ref}
               {...otherProps}
             >
+              {empty && <option hidden value=""></option>}
               {optionsList}
             </select>
             <ArrowIcon className={classNames('select__arrow')} />
           </div>
+          {error && isSubmitted && <span className="select__error">{error}</span>}
         </div>
       )
     }
@@ -58,9 +75,11 @@ export const Select = memo(
           ref={ref}
           {...otherProps}
         >
+          {empty && <option hidden value=""></option>}
           {optionsList}
         </select>
         <ArrowIcon className={classNames('select__arrow')} />
+        {error && isSubmitted && <span className="select__error">{error}</span>}
       </div>
     )
   })

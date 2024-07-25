@@ -1,7 +1,16 @@
 import cardImg from '@/shared/assets/img/cardImage1.jpg'
 import './Suggestion.scss'
-import { Button, Tooltip } from '@/shared/ui'
+import { AppLink, Button, Tooltip } from '@/shared/ui'
 import { scrollTo } from '@/shared/lib/utils/utils'
+import { useSelector } from 'react-redux'
+import { getLoanStatusApplicationId, getLoanStatusStep } from '@/entities/Loan'
+import {
+  getAppRouteCode,
+  getAppRouteDocument,
+  getAppRouteScoring,
+  getAppRouteSign,
+  getRouteHome
+} from '@/shared/const/routes'
 
 const terms = [
   {
@@ -22,6 +31,18 @@ const terms = [
 ]
 
 export const Suggestion = () => {
+  const step = useSelector(getLoanStatusStep)
+  const applicationId = useSelector(getLoanStatusApplicationId)
+
+  const getCurrentLink = () => {
+    if (!applicationId) return getRouteHome()
+    if (step === 3) return getAppRouteScoring(applicationId)
+    if (step === 4) return getAppRouteDocument(applicationId)
+    if (step === 5) return getAppRouteSign(applicationId)
+    if (step === 6) return getAppRouteCode(applicationId)
+    return getRouteHome()
+  }
+
   return (
     <section className="suggestion">
       <div className="suggestion__content">
@@ -47,13 +68,20 @@ export const Suggestion = () => {
             </Tooltip>
           ))}
         </div>
-        <Button
-          className="suggestion__button"
-          theme="accent"
-          onClick={() => scrollTo('prescoring-form')}
-        >
-          Apply for card
-        </Button>
+        {step > 2 ? (
+          <AppLink className="suggestion__link" theme="accent" to={getCurrentLink()}>
+            Continue registration
+          </AppLink>
+        ) : (
+          <Button
+            className="suggestion__button"
+            theme="accent"
+            onClick={() => scrollTo('prescoring')}
+          >
+            {step === 1 && 'Apply for card'}
+            {step === 2 && 'Choose an offer'}
+          </Button>
+        )}
       </div>
       <img className="suggestion__img" src={cardImg} alt="Card" />
     </section>

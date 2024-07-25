@@ -10,7 +10,7 @@ const content = [
 export const Instruction = () => {
   return (
     <section className="instruction">
-      <h1 className="instruction__title">How to get a card</h1>
+      <h3 className="instruction__title">How to get a card</h3>
       <DividerList className="instruction__list" content={content} />
     </section>
   )

@@ -1,20 +1,26 @@
+import { useSelector } from 'react-redux'
+import { ChangeEvent, FocusEvent, useCallback } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import { formValidate } from '@/shared/lib/utils/formValidate'
 import { Button, Input, InputAmount, Loader, Select } from '@/shared/ui'
+import {
+  getPrescoringError,
+  getPrescoringIsLoading
+} from '../../model/selectors/getPrescoringSelectors'
 import { regex } from '@/shared/const/regex'
-import { useSendPrescoringData } from '../../model/hooks/useSendPrescoringData'
-import { IPrescoringData } from '../../model/types/prescoring'
-import { SelectAmount } from '../SelectAmount/SelectAmount'
-import './PrescoringForm.scss'
-import { ChangeEvent, FocusEvent } from 'react'
+import { IPrescoringData } from '@/shared/types/loan'
 import { filterDigits } from '@/shared/lib/utils/utils'
+import { SelectAmount } from '../SelectAmount/SelectAmount'
+import { formValidate } from '@/shared/lib/utils/formValidate'
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch'
+import { prescoringActions } from '../../model/slice/prescoringSlice'
+import { createLoanApplication } from '../../model/services/createLoanApplication'
+import './PrescoringForm.scss'
 
 const AMOUNT_DEFAULT = 150000
 const AMOUNT_MIN = 15000
 const AMOUNT_MAX = 600000
 
 export const PrescoringForm = () => {
-  const { sendData, resetError, data, error, isLoading } = useSendPrescoringData()
   const {
     register,
     watch,
@@ -28,25 +34,33 @@ export const PrescoringForm = () => {
     }
   })
 
-  const onBlurAmount = (e: FocusEvent<HTMLInputElement>) => {
+  const error = useSelector(getPrescoringError)
+  const isLoading = useSelector(getPrescoringIsLoading)
+  const dispatch = useAppDispatch()
+
+  const resetError = () => dispatch(prescoringActions.resetError())
+
+  const onSubmit: SubmitHandler<IPrescoringData> = (data) => {
+    const term = Number(data.term)
+    const middleName = data.middleName || null
+    dispatch(createLoanApplication({ ...data, term, middleName }))
+  }
+
+  const onBlurAmount = useCallback((e: FocusEvent<HTMLInputElement>) => {
     let newValue = Number(filterDigits(e.target.value))
     if (newValue >= AMOUNT_MAX) newValue = AMOUNT_MAX
     if (newValue <= AMOUNT_MIN) newValue = AMOUNT_MIN
     setValue('amount', newValue)
-  }
+  }, [])
 
-  const onChangeAmount = (e: ChangeEvent<HTMLInputElement>) => {
+  const onChangeAmount = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     const newValue = Number(filterDigits(e.target.value))
     setValue('amount', newValue)
-  }
-
-  const onSubmit: SubmitHandler<IPrescoringData> = (data) => {
-    sendData(data)
-  }
+  }, [])
 
   if (isLoading) {
     return (
-      <div className="prescoring-form prescoring-form__loading">
+      <div className="prescoring-form__loading">
         <Loader />
       </div>
     )
@@ -54,8 +68,8 @@ export const PrescoringForm = () => {
 
   if (error) {
     return (
-      <div className="prescoring-form prescoring-form__error">
-        <p>{error}</p>
+      <div className="prescoring-form__error">
+        <p className="prescoring-form__error-message">{error}</p>
         <Button theme="error" onClick={() => resetError()}>
           Try again
         </Button>
@@ -63,20 +77,8 @@ export const PrescoringForm = () => {
     )
   }
 
-  if (data) {
-    return (
-      <div className="prescoring-form__data">
-        <p>{data}</p>
-      </div>
-    )
-  }
-
   return (
-    <form
-      className="prescoring-form"
-      onSubmit={handleSubmit(onSubmit)}
-      id="prescoring-form"
-    >
+    <form className="prescoring-form" onSubmit={handleSubmit(onSubmit)}>
       <div className="prescoring-form__amount-wrapper">
         <div className="prescoring-form__select-wrapper">
           <div className="prescoring-form__select-header">
@@ -112,8 +114,8 @@ export const PrescoringForm = () => {
           <Input
             placeholder="For Example Doe"
             label="Your last name"
-            error={errors['lastName']?.message}
-            isDirty={dirtyFields['lastName']}
+            error={errors.lastName?.message}
+            isDirty={dirtyFields.lastName}
             isSubmitted={isSubmitted}
             required
             {...register('lastName', {
@@ -123,8 +125,8 @@ export const PrescoringForm = () => {
           <Input
             placeholder="For Example Doe"
             label="Your first name"
-            error={errors['firstName']?.message}
-            isDirty={dirtyFields['firstName']}
+            error={errors.firstName?.message}
+            isDirty={dirtyFields.firstName}
             isSubmitted={isSubmitted}
             required
             {...register('firstName', {
@@ -150,8 +152,8 @@ export const PrescoringForm = () => {
           <Input
             placeholder="test@gmail.com"
             label="Your email"
-            error={errors['email']?.message}
-            isDirty={dirtyFields['email']}
+            error={errors.email?.message}
+            isDirty={dirtyFields.email}
             isSubmitted={isSubmitted}
             required
             {...register('email', {
@@ -165,8 +167,8 @@ export const PrescoringForm = () => {
           <Input
             placeholder="Select Date and Time"
             label="Your date of birth"
-            error={errors['birthdate']?.message}
-            isDirty={dirtyFields['birthdate']}
+            error={errors.birthdate?.message}
+            isDirty={dirtyFields.birthdate}
             isSubmitted={isSubmitted}
             type="date"
             required
@@ -178,8 +180,8 @@ export const PrescoringForm = () => {
           <Input
             placeholder="0000"
             label="Your passport series"
-            error={errors['passportSeries']?.message}
-            isDirty={dirtyFields['passportSeries']}
+            error={errors.passportSeries?.message}
+            isDirty={dirtyFields.passportSeries}
             isSubmitted={isSubmitted}
             maxLength={4}
             required
@@ -195,8 +197,8 @@ export const PrescoringForm = () => {
           <Input
             placeholder="000000"
             label="Your passport number"
-            error={errors['passportNumber']?.message}
-            isDirty={dirtyFields['passportNumber']}
+            error={errors.passportNumber?.message}
+            isDirty={dirtyFields.passportNumber}
             isSubmitted={isSubmitted}
             maxLength={6}
             required
