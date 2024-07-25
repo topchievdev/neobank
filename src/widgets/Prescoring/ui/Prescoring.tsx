@@ -5,12 +5,12 @@ import { PrescoringForm } from '@/features'
 import { ErrorMessage, Loader } from '@/shared/ui'
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch'
 import {
-  getLoanStatusStep,
+  OfferMessage,
+  offerActions,
   getOfferData,
   getOfferError,
   getOfferIsLoading,
-  offerActions,
-  OfferMessage
+  getLoanStatusStep
 } from '@/entities/Loan'
 import {
   getPrescoringError,
@@ -22,10 +22,10 @@ export const Prescoring = () => {
   const dispatch = useAppDispatch()
   const data = useSelector(getOfferData)
   const step = useSelector(getLoanStatusStep)
-  const prescoringError = useSelector(getPrescoringError)
   const offerError = useSelector(getOfferError)
-  const prescoringIsLoading = useSelector(getPrescoringIsLoading)
   const offerIsLoading = useSelector(getOfferIsLoading)
+  const prescoringError = useSelector(getPrescoringError)
+  const prescoringIsLoading = useSelector(getPrescoringIsLoading)
 
   const error = prescoringError || offerError
   const isLoading = prescoringIsLoading || offerIsLoading
@@ -40,11 +40,7 @@ export const Prescoring = () => {
   }
 
   if (error) {
-    return (
-      <section>
-        <ErrorMessage error={error} onClick={resetErrorHandler} />
-      </section>
-    )
+    return <ErrorMessage error={error} onClick={resetErrorHandler} />
   }
 
   return (

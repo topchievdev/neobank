@@ -1,6 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { mainApi } from '@/shared/api/mainApi'
-import { errorHandler } from '@/shared/lib/errorHandler/errorHandler'
 import { loanStatusActions } from '../slice/loanStatusSlice'
 
 export const sendSESCode = createAsyncThunk<
@@ -11,12 +10,10 @@ export const sendSESCode = createAsyncThunk<
   const { dispatch, rejectWithValue } = thunkAPI
 
   try {
-    const response = await mainApi.post(`/document/${applicationId}/sign/code`, code)
-
-    if (response.status !== 200) throw new Error('Invalid confirmation code')
+    await mainApi.post(`/document/${applicationId}/sign/code`, code)
 
     dispatch(loanStatusActions.setStep(7))
   } catch (e) {
-    return rejectWithValue(errorHandler(e))
+    return rejectWithValue('Invalid confirmation code')
   }
 })

@@ -1,8 +1,8 @@
-import { getLoanStatusApplicationId, getLoanStatusStep } from '@/entities/Loan'
-import { NotFoundPage } from '@/pages'
 import { ReactNode } from 'react'
 import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
+import { NotFoundPage } from '@/pages'
+import { getLoanStatusApplicationId, getLoanStatusStep } from '@/entities/Loan'
 
 interface IProtectedRoute {
   children?: ReactNode
