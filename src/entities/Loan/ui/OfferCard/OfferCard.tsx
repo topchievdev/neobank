@@ -5,7 +5,7 @@ import NotIncludedIcon from '@/shared/assets/img/Error-icon.svg'
 import IncludedIcon from '@/shared/assets/img/Success-icon.svg'
 import { IOfferData } from '@/shared/types/loan'
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch'
-import { applyOffer } from '../../model/services/applyOffer'
+import { applyOffer } from '../../model/services/applyOffer/applyOffer'
 import './OfferCard.scss'
 
 export const OfferCard = (props: IOfferData) => {
@@ -45,7 +45,7 @@ export const OfferCard = (props: IOfferData) => {
     )
 
   return (
-    <article className="offer-card">
+    <article className="offer-card" data-testid="offer-card">
       <img className="offer-card__img" src={offerCardImg} alt="Surprise Image" />
       <p className="offer-card__term">Requested amount: {requestedAmount} ₽</p>
       <p className="offer-card__term">Total amount: {totalAmount} ₽</p>

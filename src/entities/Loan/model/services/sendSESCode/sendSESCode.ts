@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { mainApi } from '@/shared/api/mainApi'
-import { loanStatusActions } from '../slice/loanStatusSlice'
+import { loanStatusActions } from '../../slice/loanStatusSlice'
 
 export const sendSESCode = createAsyncThunk<
   void,

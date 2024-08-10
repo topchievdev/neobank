@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { denyApplication } from '../services/denyApplication'
+import { denyApplication } from '../services/denyApplication/denyApplication'
 import { IDenySchema } from '../types/denySchema'
 
 const initialState: IDenySchema = {

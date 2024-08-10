@@ -1,10 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { IPrescoringSchema } from '../types/prescoringSchema'
-import { createLoanApplication } from '../services/createLoanApplication'
+import { createLoanApplication } from '../services/createLoanApplication/createLoanApplication'
 
 const initialState: IPrescoringSchema = {
   error: undefined,
-  data: undefined,
   isLoading: false
 }
 

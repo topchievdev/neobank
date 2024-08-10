@@ -47,7 +47,9 @@ export const Select = memo(
     if (label) {
       return (
         <div className={classNames('select-item', {}, [className])}>
-          <Label required={required}>{label}</Label>
+          <Label required={required} htmlFor={name}>
+            {label}
+          </Label>
           <div className="select__wrapper">
             <select
               className={classNames('select', mods)}

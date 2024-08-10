@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { createDocuments } from '../services/createDocuments'
+import { createDocuments } from '../services/createDocuments/createDocuments'
 import { IDocumentsSchema } from '../types/documentsSchema'
-import { signDocuments } from '../services/signDocuments'
+import { signDocuments } from '../services/signDocuments/signDocuments'
 
 const initialState: IDocumentsSchema = {
   error: undefined,

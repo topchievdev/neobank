@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { ICodeSchema } from '../types/codeSchema'
-import { sendSESCode } from '../services/sendSESCode'
+import { sendSESCode } from '../services/sendSESCode/sendSESCode'
 
 const initialState: ICodeSchema = {
   error: undefined,

@@ -5,7 +5,7 @@ import './Input.scss'
 import ValidIcon from '@/shared/assets/img/Success-icon.svg'
 import InvalidIcon from '@/shared/assets/img/Error-icon.svg'
 
-interface IInputProps extends InputHTMLAttributes<HTMLInputElement> {
+export interface IInputProps extends InputHTMLAttributes<HTMLInputElement> {
   className?: string
   label: string
   error?: string

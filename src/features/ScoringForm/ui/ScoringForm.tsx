@@ -4,12 +4,13 @@ import { IScoringData } from '@/shared/types/loan'
 import { Button, Input, Select } from '@/shared/ui'
 import { formValidate } from '@/shared/lib/utils/formValidate'
 import './ScoringForm.scss'
-import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch'
-import { finishRegistration } from '../model/services/finishRegistration'
-import { useSelector } from 'react-redux'
-import { getLoanStatusApplicationId } from '@/entities/Loan/model/selectors/getLoanStatusSelectors'
 
-export const ScoringForm = () => {
+interface IScoringFormProps {
+  onSubmit: (data: IScoringData) => void
+}
+
+export const ScoringForm = (props: IScoringFormProps) => {
+  const { onSubmit } = props
   const {
     register,
     handleSubmit,
@@ -21,26 +22,12 @@ export const ScoringForm = () => {
     }
   })
 
-  const applicationId = useSelector(getLoanStatusApplicationId)
-  const dispatch = useAppDispatch()
-
-  const onSubmit = (data: IScoringData) => {
-    const dependentAmount = Number(data.dependentAmount)
-    const employment = {
-      ...data.employment,
-      employerINN: Number(data.employment.employerINN),
-      salary: Number(data.employment.salary),
-      workExperienceTotal: Number(data.employment.workExperienceTotal),
-      workExperienceCurrent: Number(data.employment.workExperienceCurrent)
-    }
-
-    const scoringData = { ...data, dependentAmount, employment }
-
-    if (applicationId) dispatch(finishRegistration({ scoringData, applicationId }))
-  }
-
   return (
-    <form className="scoring-form" onSubmit={handleSubmit(onSubmit)}>
+    <form
+      className="scoring-form"
+      onSubmit={handleSubmit(onSubmit)}
+      data-testid="scoring-form"
+    >
       <div className="scoring-form__header">
         <h3 className="scoring-form__title">Continuation of the application</h3>
         <p className="scoring-form__step">Step 2 of 5</p>
@@ -157,6 +144,7 @@ export const ScoringForm = () => {
           {...register('employment.employerINN', {
             required: 'Enter your employer INN',
             minLength: { value: 12, message: 'INN must be 12 digits' },
+            maxLength: { value: 12, message: 'INN must be 12 digits' },
             pattern: {
               value: regex.digits,
               message: 'Please enter only digits'
@@ -231,7 +219,11 @@ export const ScoringForm = () => {
           })}
         />
       </div>
-      <Button className="scoring-form__button" type="submit">
+      <Button
+        className="scoring-form__button"
+        type="submit"
+        data-testid="scoring-submit"
+      >
         Continue
       </Button>
     </form>

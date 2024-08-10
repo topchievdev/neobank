@@ -2,7 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit'
 import { errorHandler } from '@/shared/lib/errorHandler/errorHandler'
 import { IOfferData } from '@/shared/types/loan'
 import { mainApi } from '@/shared/api/mainApi'
-import { loanStatusActions } from '../slice/loanStatusSlice'
+import { loanStatusActions } from '../../slice/loanStatusSlice'
 
 export const applyOffer = createAsyncThunk<
   void,
