@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux'
 import { ChangeEvent, FocusEvent, useCallback } from 'react'
-import { SubmitHandler, useForm } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 import { Button, Input, InputAmount, Loader, Select } from '@/shared/ui'
 import {
   getPrescoringError,

@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { IScoringSchema } from '../types/scoringSchema'
-import { finishRegistration } from '../services/finishRegistration'
+import { finishRegistration } from '../services/finishRegistration/finishRegistration'
 
 const initialState: IScoringSchema = {
   error: undefined,

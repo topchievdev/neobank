@@ -1,7 +1,7 @@
 export { ScheduleTable } from './ui/ScheduleTable'
 export { scheduleReducer, scheduleActions } from './model/slice/scheduleSlice'
 export { IScheduleSchema } from './model/types/schedule'
-export { getApplicationById } from './model/services/getApplicationById'
+export { getApplicationById } from './model/services/getApplicatoinById/getApplicationById'
 export {
   getScheduleData,
   getScheduleError,

@@ -8,13 +8,13 @@ import {
 } from '@/entities/Loan/model/selectors/getLoanStatusSelectors/getLoanStatusSelectors'
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch'
 import {
+  finishRegistration,
   getScoringError,
   getScoringIsLoading,
   scoringActions
 } from '@/features/ScoringForm'
 import '@/app/styles/index.scss'
 import { IScoringData } from '@/shared/types/loan'
-import { finishRegistration } from '@/features/ScoringForm/model/services/finishRegistration'
 
 const ScoringPage = () => {
   const step = useSelector(getLoanStatusStep)

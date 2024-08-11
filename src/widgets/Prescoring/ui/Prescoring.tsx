@@ -13,12 +13,12 @@ import {
   getLoanStatusStep
 } from '@/entities/Loan'
 import {
+  createLoanApplication,
   getPrescoringError,
   getPrescoringIsLoading,
   prescoringActions
 } from '@/features/PrescoringForm'
 import { IPrescoringData } from '@/shared/types/loan'
-import { createLoanApplication } from '@/features/PrescoringForm/model/services/createLoanApplication'
 
 export const Prescoring = () => {
   const dispatch = useAppDispatch()

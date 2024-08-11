@@ -17,6 +17,7 @@ export const NewsItem = (props: INewsItemProps) => {
       rel="noopener noreferrer"
       key={item?.description}
       draggable="false"
+      data-testid="news-item"
     >
       <img
         className="news-list__img"
