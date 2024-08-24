@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import { IScheduleResponse } from '../types/schedule'
+import { IScheduleResponse } from '../../types/schedule'
 import { errorHandler } from '@/shared/lib/errorHandler/errorHandler'
 import { mainApi } from '@/shared/api/mainApi'
 

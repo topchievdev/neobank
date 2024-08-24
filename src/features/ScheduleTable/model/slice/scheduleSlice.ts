@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { IScheduleResponse, IScheduleSchema } from '../types/schedule'
-import { getApplicationById } from '../services/getApplicationById'
+import { getApplicationById } from '../services/getApplicatoinById/getApplicationById'
 
 const initialState: IScheduleSchema = {
   data: undefined,

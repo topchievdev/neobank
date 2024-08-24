@@ -1,7 +1,7 @@
 import { IOfferData } from '@/shared/types/loan'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { IOfferSchema } from '../types/offerSchema'
-import { applyOffer } from '../services/applyOffer'
+import { applyOffer } from '../services/applyOffer/applyOffer'
 import { loanStatus } from '@/shared/lib/utils/loanStatus'
 
 const initialState: IOfferSchema = {

@@ -2,7 +2,7 @@ import './Loader.scss'
 
 export const Loader = () => {
   return (
-    <div className="loader-wrapper">
+    <div className="loader-wrapper" data-testid="loader">
       <svg
         className="loader"
         width="70"

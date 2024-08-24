@@ -21,7 +21,8 @@ export const Button = memo((props: IButtonProps) => {
     disabled,
     onClick,
     type = 'button',
-    theme = 'accent'
+    theme = 'accent',
+    ...otherProps
   } = props
 
   return (
@@ -34,6 +35,7 @@ export const Button = memo((props: IButtonProps) => {
       type={type}
       disabled={disabled}
       onClick={onClick}
+      {...otherProps}
     >
       {children}
     </button>

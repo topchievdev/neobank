@@ -1,11 +1,11 @@
 import { useSelector } from 'react-redux'
 import { ChangeEvent, FocusEvent, useCallback } from 'react'
-import { SubmitHandler, useForm } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 import { Button, Input, InputAmount, Loader, Select } from '@/shared/ui'
 import {
   getPrescoringError,
   getPrescoringIsLoading
-} from '../../model/selectors/getPrescoringSelectors'
+} from '../../model/selectors/getPrescoring/getPrescoring'
 import { regex } from '@/shared/const/regex'
 import { IPrescoringData } from '@/shared/types/loan'
 import { filterDigits } from '@/shared/lib/utils/utils'
@@ -13,14 +13,18 @@ import { SelectAmount } from '../SelectAmount/SelectAmount'
 import { formValidate } from '@/shared/lib/utils/formValidate'
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch'
 import { prescoringActions } from '../../model/slice/prescoringSlice'
-import { createLoanApplication } from '../../model/services/createLoanApplication'
 import './PrescoringForm.scss'
 
 const AMOUNT_DEFAULT = 150000
 const AMOUNT_MIN = 15000
 const AMOUNT_MAX = 600000
 
-export const PrescoringForm = () => {
+interface IPrescoringFormProps {
+  onSubmit: (data: IPrescoringData) => void
+}
+
+export const PrescoringForm = (props: IPrescoringFormProps) => {
+  const { onSubmit } = props
   const {
     register,
     watch,
@@ -39,12 +43,6 @@ export const PrescoringForm = () => {
   const dispatch = useAppDispatch()
 
   const resetError = () => dispatch(prescoringActions.resetError())
-
-  const onSubmit: SubmitHandler<IPrescoringData> = (data) => {
-    const term = Number(data.term)
-    const middleName = data.middleName || null
-    dispatch(createLoanApplication({ ...data, term, middleName }))
-  }
 
   const onBlurAmount = useCallback((e: FocusEvent<HTMLInputElement>) => {
     let newValue = Number(filterDigits(e.target.value))
@@ -78,7 +76,11 @@ export const PrescoringForm = () => {
   }
 
   return (
-    <form className="prescoring-form" onSubmit={handleSubmit(onSubmit)}>
+    <form
+      className="prescoring-form"
+      onSubmit={handleSubmit(onSubmit)}
+      data-testid="prescoring-form"
+    >
       <div className="prescoring-form__amount-wrapper">
         <div className="prescoring-form__select-wrapper">
           <div className="prescoring-form__select-header">
@@ -86,12 +88,15 @@ export const PrescoringForm = () => {
             <p className="prescoring-form__step">Step 1 of 5</p>
           </div>
           <SelectAmount
+            data-testid="amount"
             label="Select Amount"
             min={AMOUNT_MIN}
             max={AMOUNT_MAX}
-            onBlur={onBlurAmount}
             value={watch('amount')}
-            {...(register('amount'), { onChange: onChangeAmount })}
+            {...register('amount', {
+              onChange: onChangeAmount,
+              onBlur: onBlurAmount
+            })}
           />
         </div>
         <div className="prescoring-form__total-wrapper">
@@ -99,12 +104,15 @@ export const PrescoringForm = () => {
             You have chosen the amount
           </h4>
           <InputAmount
+            data-testid="amount"
             className="prescoring-form__amount"
             min={AMOUNT_MIN}
             max={AMOUNT_MAX}
-            onBlur={onBlurAmount}
             value={watch('amount')}
-            {...(register('amount'), { onChange: onChangeAmount })}
+            {...register('amount', {
+              onChange: onChangeAmount,
+              onBlur: onBlurAmount
+            })}
           />
         </div>
       </div>
@@ -123,7 +131,7 @@ export const PrescoringForm = () => {
             })}
           />
           <Input
-            placeholder="For Example Doe"
+            placeholder="For Example John"
             label="Your first name"
             error={errors.firstName?.message}
             isDirty={dirtyFields.firstName}
@@ -213,7 +221,11 @@ export const PrescoringForm = () => {
           />
         </div>
       </div>
-      <Button className="prescoring-form__button" type="submit">
+      <Button
+        className="prescoring-form__button"
+        type="submit"
+        data-testid="prescoring-submit"
+      >
         Continue
       </Button>
     </form>

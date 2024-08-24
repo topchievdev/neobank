@@ -2,24 +2,45 @@ import { useCallback } from 'react'
 import { useSelector } from 'react-redux'
 import { ScoringForm } from '@/features'
 import { ErrorMessage, InfoMessage, Loader } from '@/shared/ui'
-import { getLoanStatusStep } from '@/entities/Loan/model/selectors/getLoanStatusSelectors'
+import {
+  getLoanStatusApplicationId,
+  getLoanStatusStep
+} from '@/entities/Loan/model/selectors/getLoanStatusSelectors/getLoanStatusSelectors'
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch'
 import {
+  finishRegistration,
   getScoringError,
   getScoringIsLoading,
   scoringActions
 } from '@/features/ScoringForm'
 import '@/app/styles/index.scss'
+import { IScoringData } from '@/shared/types/loan'
 
 const ScoringPage = () => {
-  const dispatch = useAppDispatch()
   const step = useSelector(getLoanStatusStep)
   const error = useSelector(getScoringError)
   const isLoading = useSelector(getScoringIsLoading)
+  const applicationId = useSelector(getLoanStatusApplicationId)
+  const dispatch = useAppDispatch()
 
   const resetErrorHandler = useCallback(() => {
     dispatch(scoringActions.resetError())
   }, [])
+
+  const onSubmit = (data: IScoringData) => {
+    const dependentAmount = Number(data.dependentAmount)
+    const employment = {
+      ...data.employment,
+      employerINN: Number(data.employment.employerINN),
+      salary: Number(data.employment.salary),
+      workExperienceTotal: Number(data.employment.workExperienceTotal),
+      workExperienceCurrent: Number(data.employment.workExperienceCurrent)
+    }
+
+    const scoringData = { ...data, dependentAmount, employment }
+
+    if (applicationId) dispatch(finishRegistration({ scoringData, applicationId }))
+  }
 
   if (isLoading) {
     return (
@@ -45,7 +66,7 @@ const ScoringPage = () => {
           text="The answer will come to your mail within 10 minutes"
         />
       )}
-      {step === 3 && <ScoringForm />}
+      {step === 3 && <ScoringForm onSubmit={onSubmit} />}
     </main>
   )
 }

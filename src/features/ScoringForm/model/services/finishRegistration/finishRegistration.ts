@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { mainApi } from '@/shared/api/mainApi'
-import { IScoringDataWithId } from '../types/scoring'
+import { IScoringDataWithId } from '../../types/scoring'
 import { errorHandler } from '@/shared/lib/errorHandler/errorHandler'
 import { loanStatusActions } from '@/entities/Loan'
 

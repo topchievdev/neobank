@@ -11,7 +11,7 @@ import {
 import { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch'
-import { createDocuments } from '@/entities/Loan/model/services/createDocuments'
+import { createDocuments } from '@/entities/Loan/model/services/createDocuments/createDocuments'
 import { getScheduleData } from '@/features/ScheduleTable'
 
 export const PaymentSchedule = () => {

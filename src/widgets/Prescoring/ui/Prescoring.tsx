@@ -13,10 +13,12 @@ import {
   getLoanStatusStep
 } from '@/entities/Loan'
 import {
+  createLoanApplication,
   getPrescoringError,
   getPrescoringIsLoading,
   prescoringActions
 } from '@/features/PrescoringForm'
+import { IPrescoringData } from '@/shared/types/loan'
 
 export const Prescoring = () => {
   const dispatch = useAppDispatch()
@@ -29,6 +31,12 @@ export const Prescoring = () => {
 
   const error = prescoringError || offerError
   const isLoading = prescoringIsLoading || offerIsLoading
+
+  const onSubmit = (data: IPrescoringData) => {
+    const term = Number(data.term)
+    const middleName = data.middleName || null
+    dispatch(createLoanApplication({ ...data, term, middleName }))
+  }
 
   const resetErrorHandler = useCallback(() => {
     dispatch(prescoringActions.resetError())
@@ -45,7 +53,7 @@ export const Prescoring = () => {
 
   return (
     <section id="prescoring">
-      {step === 1 && <PrescoringForm />}
+      {step === 1 && <PrescoringForm onSubmit={onSubmit} />}
       {step === 2 && data && <OffersList items={data} />}
       {step > 2 && <OfferMessage />}
     </section>

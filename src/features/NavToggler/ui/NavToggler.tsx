@@ -20,6 +20,7 @@ export const NavToggler = memo((props: INavToggler) => {
       className={classNames('nav-toggler', mods, [className])}
       onClick={onClick}
       type="button"
+      data-testid="nav-toggler"
     >
       <span className="nav-toggler__span"></span>
     </button>
